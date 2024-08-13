@@ -1,7 +1,7 @@
 "use client";
 
 import { Form, FormControl, FormDescription } from "@/components/ui/form";
-import { Doctors, genderOptions } from "@/constants";
+import { Doctors, genderOptions, IdentificationTypes } from "@/constants";
 import { createUser } from "@/lib/actions/patient.actions";
 import { userFormSchema } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,6 +11,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import CustomFormField, { FormFieldTypes } from "./CustomFormField";
+import FileUploader from "./FileUploader";
 import SubmitButton from "./SubmitButton";
 import { Label } from "./ui/label";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
@@ -56,6 +57,8 @@ const RegisterForm = ({ user }: { user: User }) => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-6 md:w-[90%] lg:w-[80%] mx-auto"
       >
+        {/* Personal Information */}
+
         <section className="flex flex-col gap-3 lg:gap-6">
           <h1 className="text-xl font-semibold text-slate-300">
             Personal Information
@@ -119,6 +122,9 @@ const RegisterForm = ({ user }: { user: User }) => {
             />
           </div>
         </section>
+
+        {/* Medical Information */}
+
         <section className="flex flex-col gap-3 lg:gap-6">
           <h1 className="text-xl font-semibold text-slate-300">
             Medical Information
@@ -188,12 +194,65 @@ const RegisterForm = ({ user }: { user: User }) => {
             <CustomFormField
               control={form.control}
               fieldTypes={FormFieldTypes.INPUT}
-              name="allergies"
-              placeholder="Peanuts, Seafood"
-              label="Allergies"
+              name="currentMedication"
+              placeholder="Paracetamol, Aspirin"
+              label="Current Medication (If any)"
+            />
+          </div>
+          <div className="flex flex-col lg:flex-row gap-4 lg:min-w-[60%] lg:mx-auto lg:text-center">
+            <CustomFormField
+              control={form.control}
+              fieldTypes={FormFieldTypes.INPUT}
+              name="pastMedicalHistory"
+              placeholder="Diabetes, Hypertension"
+              label="Past Medical History (If any)"
             />
           </div>
         </section>
+
+        {/* Identification Information */}
+
+        <section className="flex flex-col gap-3 lg:gap-6">
+          <h1 className="text-xl font-semibold text-slate-300">
+            Identification Information
+          </h1>
+          <div className="flex flex-col lg:flex-row gap-4">
+            <CustomFormField
+              control={form.control}
+              fieldTypes={FormFieldTypes.SELECT}
+              name="identificationType"
+              placeholder="Select Identification Type"
+              label="Identification Type"
+            >
+              {IdentificationTypes.map((type) => (
+                <SelectItem key={type} value={type}>
+                  {type}
+                </SelectItem>
+              ))}
+            </CustomFormField>
+            <CustomFormField
+              control={form.control}
+              fieldTypes={FormFieldTypes.INPUT}
+              name="identificationNumber"
+              placeholder="123456789"
+              label="Identification Number"
+            />
+          </div>
+          <CustomFormField
+            control={form.control}
+            name="identificationDocument"
+            label="Upload Identification Document"
+            fieldTypes={FormFieldTypes.SKELETON}
+            renderSkeleton={(field) => (
+              <FormControl>
+                <FileUploader onChange={field.onChange} files={field.value} />
+              </FormControl>
+            )}
+          />
+        </section>
+
+        {/* Submit Button & Form description */}
+
         <div className="flex flex-col items-center justify-center gap-5 md:py-20 py-10">
           <FormDescription className="text-xs lg:text-sm text-center cursor-default">
             Let us know about you, that will help us to give you the best{" "}

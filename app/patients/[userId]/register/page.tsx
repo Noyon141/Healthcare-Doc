@@ -30,7 +30,7 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
               </span>
             </h1>
           </Link>
-          <h2 className="text-3xl lg:text-4xl text-center font-semibold tracking-wider">
+          <h2 className="text-xl lg:text-2xl text-center font-semibold tracking-wider">
             Welcome{" "}
             <span className="text-wrap text-green-400">{user.name}</span>
           </h2>
@@ -41,11 +41,11 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
         </div>
 
         <Image
-          src={"/registrationFormImage.png"}
+          src={"/register-img.png"}
           alt="images"
-          className="hidden md:block min-h-screen h-[100%] rounded object-cover md:w-[45vw] lg:w-[40vw]"
-          width={1000}
-          height={1000}
+          className="hidden md:block min-h-[210vh] h-[100%] rounded object-cover  md:w-[50vw] lg:w-[40vw]"
+          width={4000}
+          height={4000}
         />
       </div>
     </div>
