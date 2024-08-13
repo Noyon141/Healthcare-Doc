@@ -20,6 +20,26 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Set Up Environment Variables ##
+
+Create a new file named `.env` in the root of your project and add the following content:
+
+```env
+#APPWRITE
+NEXT_PUBLIC_ENDPOINT=https://cloud.appwrite.io/v1
+PROJECT_ID=
+API_KEY=
+DATABASE_ID=
+PATIENT_COLLECTION_ID=
+APPOINTMENT_COLLECTION_ID=
+NEXT_PUBLIC_BUCKET_ID=
+
+NEXT_PUBLIC_ADMIN_PASSKEY=111111
+```
+
+Replace the placeholder values with your actual Appwrite credentials. You can obtain these credentials by signing up on the [Appwrite website](https://appwrite.io/).
+
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
