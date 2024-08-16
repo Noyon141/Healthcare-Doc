@@ -12,7 +12,7 @@ const HomePage = () => {
       {/* OTP VERIFICATION */}
 
       <div className="h-full flex flex-col md:flex-row justify-center lg:justify-between">
-        <div className="flex md:w-[50%] md:mx-4 flex-col items-center md:justify-center gap-4 lg:gap-8 mt-8 lg:mt-16 p-4">
+        <div className="flex md:w-[50%] flex-col items-center md:justify-center gap-4 lg:gap-8 mt-8 lg:mt-16 p-4">
           <Link href={"/"} className="cursor-pointer uppercase">
             <h1 className="flex gap-2 lg:text-4xl text-3xl font-bold tracking-wider ">
               Healthcare

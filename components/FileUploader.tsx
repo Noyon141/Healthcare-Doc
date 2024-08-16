@@ -43,8 +43,8 @@ const FileUploader = ({ files, onChange }: FileUploaderProps) => {
         </p>
       ) : (
         <p className="text-sm font-thin tracking-wider text-white/[0.6]">
-          Drag 'n' drop the scanned copy of document here, or click to select
-          files
+          Drag &apos;n&apos; drop the scanned copy of document here, or click to
+          select files
         </p>
       )}
     </div>

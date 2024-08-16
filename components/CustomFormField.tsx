@@ -6,6 +6,7 @@ import "react-phone-number-input/style.css";
 import { Calendar } from "lucide-react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Checkbox } from "./ui/checkbox";
 import {
   FormControl,
   FormField,
@@ -14,6 +15,7 @@ import {
   FormMessage,
 } from "./ui/form";
 import { Input } from "./ui/input";
+import { Label } from "./ui/label";
 import { Select, SelectContent, SelectTrigger, SelectValue } from "./ui/select";
 
 export enum FormFieldTypes {
@@ -50,7 +52,7 @@ export const RenderField = ({
   field: any;
   props: CustomFormFieldProps;
 }) => {
-  const { fieldTypes, iconSrc, placeholder, altSrc } = props;
+  const { fieldTypes, iconSrc, placeholder, altSrc, name, label } = props;
 
   switch (fieldTypes) {
     case FormFieldTypes.INPUT:
@@ -113,6 +115,24 @@ export const RenderField = ({
       );
     case FormFieldTypes.SKELETON:
       return props.renderSkeleton && props.renderSkeleton(field);
+    case FormFieldTypes.CHECKBOX:
+      return (
+        <FormControl>
+          <div className="flex items-center gap-4 cursor-pointer">
+            <Checkbox
+              value={field.value}
+              onCheckedChange={field.onChange}
+              id={name}
+            />
+            <Label
+              className="text-xs lg:text-base cursor-pointer text-white/[0.7]"
+              htmlFor={name}
+            >
+              {label}
+            </Label>
+          </div>
+        </FormControl>
+      );
     default:
       break;
   }
